@@ -105,9 +105,8 @@ void loop(void)
   Serial.print("\tServo Output: ");
   Serial.print(Output, 3);
   Serial.print("   ");
-  Serial.print("Temp: ");
+  Serial.print("\tTemp: ");
   Serial.print(temp);
-  Serial.print("   ");
 
   displayCalStatus(); // display calibration status for each sensor event
 
