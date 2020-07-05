@@ -1,13 +1,19 @@
 # LIVE software
 
 # Description
-There are 3 main components for our flight software: video recording, PID controller, and data logging.
+There are 4 components to the flight software: video streaming, video recording, PID controller, and data logging.
 
-Our post-flight data analysis will include a video merge script and data logging merge script.
+There are 2 compoenents to the post-flight data analysis: video merging and data log merging.
 
 # Dependencies
-For Raspberry Pi, all software will employ Python 3.5.3. The necessary python3 packages are pyserial and python-csv with pip3 install (both needed for data logging).
+For the Raspberry Pi 3B+, we are using a Raspbian Stretch image from 2019-04-08 found here: https://howchoo.com/g/nzc0yjzjy2u/raspbian-stretch-download
 
-***Ruben - insert depedncies about video recording/streaming here once complete***
+- For data logging, we are using Python 3.5.3. Our necessary python3 modules are pyserial and python-csv (use pip3 to install).
 
-For Arduino, install these libraries using Library Manager in order to run the PID controller: Wire, Adafruit_Sensor, Adafruit_BNO055, utility/imumaths, Servo, and PID.
+- For video streaming, we are using ___<insert packages/drivers needed here Ruben>___.
+
+- For video recording, we are using ___<insert packages/drivers needed here Ruben>___.
+
+For our Teensy 3.5, we are using Arduino 1.8.12 with a Teensyduino driver.
+
+- For the PID controller, install Wire, Adafruit_Sensor, Adafruit_BNO055, utility/imumaths, Servo, and PID (use Arduino Library Manager)
