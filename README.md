@@ -1,5 +1,5 @@
 # LIVE software- Master Branch
- *Just a heads up this is only for final software go check beta or alfo for non-finalized software
+ *Just a heads up this is only for final software go check beta or alfa for non-finalized software*
 
 # Description
 There are 4 components to the flight software: video streaming, video recording, PID controller, and data logging.
