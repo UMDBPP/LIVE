@@ -11,9 +11,9 @@ For the Raspberry Pi 3B+, we are using a Raspbian Stretch image from 2019-04-08 
 
 - For data logging, we are using Python 3.5.3. Our necessary python3 modules are pyserial and python-csv (use pip3 to install).
 
-- For video streaming, we are utilizing the native raspivid application on the Raspberry Pi. We will be using raspivid to create am RTSP stream, which will be piped through the VLC media player, via which the stream can be accessed on other devices. The VLC media player can be downloaded on the Pi using `sudo apt-get install vlc` in the terminal.
+- For video streaming, we are utilizing the native raspivid application on the Raspberry Pi and the VLC media player, which can be downloaded using `sudo apt-get install vlc` in the terminal.
 
-- For video recording, we are using a modified version of the native raspivid application on the Raspberry Pi. To make the modifications to the raspivid source code, we downloaded the VIM editor using `sudo apt-get install vim` in the terminal. We also downloaded github, using `sudo apt-get install git` so that we could later clone the repository containing the raspivid source code.
+- For video recording, we are using a modified version of the native raspivid application on the Raspberry Pi. To make the modifications to the raspivid source code, we downloaded the VIM editor using `sudo apt-get install vim` in the terminal. We also downloaded github, using `sudo apt-get install git` so that we could clone the repository containing the raspivid source code.
 
 For our Teensy 3.5, we are using Arduino 1.8.12 with a Teensyduino driver.
 
