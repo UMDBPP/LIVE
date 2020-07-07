@@ -4,7 +4,7 @@
 # Description
 There are 4 components to the flight software: video streaming, video recording, PID controller, and data logging.
 
-There are 2 compoenents to the post-flight data analysis: video merging and data log merging.
+There are 2 components to the post-flight data analysis: video merging and data log merging.
 
 # Dependencies
 For the Raspberry Pi 3B+, we are using a Raspbian Stretch image from 2019-04-08 found here: https://howchoo.com/g/nzc0yjzjy2u/raspbian-stretch-download
