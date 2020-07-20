@@ -8,49 +8,52 @@ echo "Enter the number of segmented video clips recorded:"
 
 read numvid
 
+-rm videoprocessing.txt
+
 if [[ "$numvid" -lt "10" ]]
 then
-    MP4Box -add video0001.h264 
+    echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
     for i in {2..$numvid}
         do
-        -cat video000$i.h264 
+        echo "-cat video000$i.h264 " >> videoprocessing.txt
     done
-    finalvideo.mp4 
+    echo "finalvideo.mp4" >> videoprocessing.txt
 fi
 
 if [[ "$numvid" -ge "10" ]]
 then
     if [[ "$numvid" -ge "100" ]]
     then 
-        MP4Box -add video0001.h264 
+        echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
         for i in {2..9}
             do
-            -cat video000$i.h264 
+            echo "-cat video000$i.h264 " >> videoprocessing.txt
         done
         for i in {10..99}
             do
-            -cat video00$i.h264 
+            echo "-cat video00$i.h264 " >> videoprocessing.txt
         done
         for i in {100..$numvid}
             do
-            -cat video0$i.h264 
+            echo "-cat video0$i.h264 " >> videoprocessing.txt
         done
-        finalvideo.mp4 
+        echo "finalvideo.mp4" >> videoprocessing.txt
     fi
 
 else 
-    MP4Box -add video0001.h264 
+    echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
     for i in {2..$numvid}
         do
-        -cat video000$i.h264
+        echo "-cat video000$i.h264 " >> videoprocessing.txt
     done
     for i in {10..$numvid}
         do 
-        -cat video00$i.h264
+        echo "-cat video00$i.h264 " >> videoprocessing.txt
     done
-    finalvideo.mp4
+    echo "finalvideo.mp4" >> videoprocessing.txt
 fi
 
+$(sed -n '1p' videoprocessing.txt)
 
 echo "Video processing is complete!"
 echo "Processed video file stored in 'finalvideo.mp4'"
