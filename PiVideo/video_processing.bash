@@ -15,9 +15,9 @@ then
     echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
     for i in {2..$numvid}
         do
-        echo "-cat video000$i.h264 " >> videoprocessing.txt
+        echo -n "-cat video000$i.h264 " >> videoprocessing.txt
     done
-    echo "finalvideo.mp4" >> videoprocessing.txt
+    echo -n "finalvideo.mp4" >> videoprocessing.txt
 fi
 
 if [[ "$numvid" -ge "10" ]]
@@ -27,30 +27,30 @@ then
         echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
         for i in {2..9}
             do
-            echo "-cat video000$i.h264 " >> videoprocessing.txt
+            echo -n "-cat video000$i.h264 " >> videoprocessing.txt
         done
         for i in {10..99}
             do
-            echo "-cat video00$i.h264 " >> videoprocessing.txt
+            echo -n "-cat video00$i.h264 " >> videoprocessing.txt
         done
         for i in {100..$numvid}
             do
-            echo "-cat video0$i.h264 " >> videoprocessing.txt
+            echo -n "-cat video0$i.h264 " >> videoprocessing.txt
         done
-        echo "finalvideo.mp4" >> videoprocessing.txt
+        echo -n "finalvideo.mp4" >> videoprocessing.txt
     fi
 
-else 
+elif [[ "$numvid" -lt "100" ]]
     echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
     for i in {2..$numvid}
         do
-        echo "-cat video000$i.h264 " >> videoprocessing.txt
+        echo -n "-cat video000$i.h264 " >> videoprocessing.txt
     done
     for i in {10..$numvid}
         do 
-        echo "-cat video00$i.h264 " >> videoprocessing.txt
+        echo -n "-cat video00$i.h264 " >> videoprocessing.txt
     done
-    echo "finalvideo.mp4" >> videoprocessing.txt
+    echo -n "finalvideo.mp4" >> videoprocessing.txt
 fi
 
 $(sed -n '1p' videoprocessing.txt)
