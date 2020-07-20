@@ -18,7 +18,13 @@ if __name__ == '__main__':
             line=ser.readline()  # reads in all bytes of data
             line=line.decode('utf-8').split()  # decodes line with utf-8 and splits into list
             print(line)  # sanity check - prints each line to terminal
-            csvfile=open('data.csv','a',newline='\n')  # opens csv file
-            obj=csv.writer(csvfile)  # creates csv file object
-            obj.writerow(line)  # writes each line to a new row in csv
-            csvfile.close()
+            #csvfile=open('data.csv','a',newline='\n')  # opens csv file
+            #obj=csv.writer(csvfile)  # creates csv file object
+            #obj.writerow(line)  # writes each line to a new row in csv
+            #csvfile.close()
+            
+            for i in range(100):   #just testing with a random number
+                  with io.open('data' + str(i) + '.csv', 'a', encoding='utf-8') as f: 
+                          f.write(str(line))
+                            f.close()
+                            
