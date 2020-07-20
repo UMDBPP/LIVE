@@ -5,6 +5,7 @@
 echo "Enter the number of segmented video clips recorded:"
 
 # The number inputted into the terminal will be stored in the variable 'numvid'
+# The number entered should be the number of video clips that were recorded (the greatest string of numbers following 'video' in the filename, excluding any leading zeros)
 
 read numvid
 
@@ -26,20 +27,20 @@ if [[ "$numvid" -ge "10" ]]
 then
     if [[ "$numvid" -ge "100" ]]
     then 
-        echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
-        for i in {2..9}
+        echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
+        for (( i = 2; i <= 9; i++ ))
             do
             echo -n "-cat video000" >> videoprocessing.txt
             echo -n "$i" >> videoprocessing.txt
             echo -n  ".h264 " >> videoprocessing.txt
         done
-        for i in {10..99}
+        for i in (( i = 10; i <= 99; i++ ))
             do
             echo -n "-cat video00" >> videoprocessing.txt
             echo -n "$i" >> videoprocessing.txt
             echo -n ".h264 " >> videoprocessing.txt
         done
-        for i in {100..$numvid}
+        for (( i = 100; i <= $numvid; i++ ))
             do
             echo -n "-cat video0" >> videoprocessing.txt
             echo -n "$i" >> videoprocessing.txt
@@ -50,14 +51,14 @@ then
 
 elif [[ "$numvid" -lt "100" ]] && [[ "$numvid" -gt "10" ]]
     then	
-    echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
-    for i in {2..$numvid}
+    echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
+    for (( i = 2; i <= 10; i++ ))
         do
         echo -n "-cat video000" >> videoprocessing.txt
         echo -n "$i" >> videoprocessing.txt
         echo -n ".h264 " >> videoprocessing.txt
     done
-    for i in {10..$numvid}
+    for (( i = 10; i <= $numvid; i++ ))
         do 
         echo -n "-cat video00"
         echo -n "$i"
