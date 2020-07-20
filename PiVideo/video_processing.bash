@@ -8,7 +8,7 @@ echo "Enter the number of segmented video clips recorded:"
 
 read numvid
 
--rm videoprocessing.txt
+rm videoprocessing.txt
 
 if [[ "$numvid" -lt "10" ]]
 then
