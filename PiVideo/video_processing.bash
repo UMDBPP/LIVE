@@ -12,8 +12,8 @@ rm videoprocessing.txt
 
 if [[ "$numvid" -lt "10" ]]
 then
-    echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
-    for i in {2..$numvid}
+    echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
+    for (( i = 2; i <= $numvid; i++ ))
         do
         echo -n "-cat video000" >> videoprocessing.txt
         echo -n "$i" >> videoprocessing.txt
@@ -48,7 +48,8 @@ then
         echo -n "finalvideo.mp4" >> videoprocessing.txt
     fi
 
-elif [[ "$numvid" -lt "100" ]]
+elif [[ "$numvid" -lt "100" ]] && [[ "$numvid" -gt "10" ]]
+    then	
     echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
     for i in {2..$numvid}
         do
@@ -63,6 +64,7 @@ elif [[ "$numvid" -lt "100" ]]
         echo -n ".h264 " >> videoprocessing.txt
     done
     echo -n "finalvideo.mp4" >> videoprocessing.txt
+
 fi
 
 $(sed -n '1p' videoprocessing.txt)
