@@ -15,7 +15,9 @@ then
     echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
     for i in {2..$numvid}
         do
-        echo -n "-cat video000$i.h264 " >> videoprocessing.txt
+        echo -n "-cat video000" >> videoprocessing.txt
+        echo -n "$i" >> videoprocessing.txt
+        echo -n ".h264 " >> videoprocessing.txt
     done
     echo -n "finalvideo.mp4" >> videoprocessing.txt
 fi
@@ -33,11 +35,15 @@ then
         done
         for i in {10..99}
             do
-            echo -n "-cat video00$i.h264 " >> videoprocessing.txt
+            echo -n "-cat video00" >> videoprocessing.txt
+            echo -n "$i" >> videoprocessing.txt
+            echo -n ".h264 " >> videoprocessing.txt
         done
         for i in {100..$numvid}
             do
-            echo -n "-cat video0$i.h264 " >> videoprocessing.txt
+            echo -n "-cat video0" >> videoprocessing.txt
+            echo -n "$i" >> videoprocessing.txt
+            echo -n ".h264 " >> videoprocessing.txt
         done
         echo -n "finalvideo.mp4" >> videoprocessing.txt
     fi
@@ -46,11 +52,15 @@ elif [[ "$numvid" -lt "100" ]]
     echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
     for i in {2..$numvid}
         do
-        echo -n "-cat video000$i.h264 " >> videoprocessing.txt
+        echo -n "-cat video000" >> videoprocessing.txt
+        echo -n "$i" >> videoprocessing.txt
+        echo -n ".h264 " >> videoprocessing.txt
     done
     for i in {10..$numvid}
         do 
-        echo -n "-cat video00$i.h264 " >> videoprocessing.txt
+        echo -n "-cat video00"
+        echo -n "$i"
+        echo -n ".h264 " >> videoprocessing.txt
     done
     echo -n "finalvideo.mp4" >> videoprocessing.txt
 fi
