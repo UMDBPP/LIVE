@@ -27,7 +27,9 @@ then
         echo "MP4Box -add video0001.h264 " >> videoprocessing.txt
         for i in {2..9}
             do
-            echo -n "-cat video000$i.h264 " >> videoprocessing.txt
+            echo -n "-cat video000" >> videoprocessing.txt
+            echo -n "$i" >> videoprocessing.txt
+            echo -n  ".h264 " >> videoprocessing.txt
         done
         for i in {10..99}
             do
