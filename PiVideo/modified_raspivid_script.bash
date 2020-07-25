@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # This script will record video from the Raspberry Pi camera module, and stream it through the VLC media player to a port connected to the Raspberry Pi IP address.
+# In order to function properly, this script requires the modified raspivid application to be downloaded from the UMDBPP/userland repository.
 # The video feed will be captured for 2.5 hours, and the feed will be saved in 20 second increments as an h264 file.
 
 # Change to path where you would like segmented videos to be stored.
