@@ -60,8 +60,8 @@ elif [[ "$numvid" -lt "100" ]] && [[ "$numvid" -gt "10" ]]
     done
     for (( i = 10; i <= $numvid; i++ ))
         do 
-        echo -n "-cat video00"
-        echo -n "$i"
+        echo -n "-cat video00" >> videoprocessing.txt
+        echo -n "$i" >> videoprocessing.txt
         echo -n ".h264 " >> videoprocessing.txt
     done
     echo -n "finalvideo.mp4" >> videoprocessing.txt
