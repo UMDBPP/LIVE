@@ -50,23 +50,22 @@ then
         echo -n "finalvideo.mp4" >> videoprocessing.txt
     fi
 
-elif [[ "$numvid" -lt "100" ]] && [[ "$numvid" -gt "10" ]]
+    if [[ "$numvid" -lt "100" ]] && [[ "$numvid" -ge "10" ]]
     then	
-    echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
-    for (( i = 2; i <= 10; i++ ))
-        do
-        echo -n "-cat video000" >> videoprocessing.txt
-        echo -n "$i" >> videoprocessing.txt
-        echo -n ".h264 " >> videoprocessing.txt
-    done
-    for (( i = 10; i <= $numvid; i++ ))
-        do 
-        echo -n "-cat video00" >> videoprocessing.txt
-        echo -n "$i" >> videoprocessing.txt
-        echo -n ".h264 " >> videoprocessing.txt
-    done
-    echo -n "finalvideo.mp4" >> videoprocessing.txt
-
+        echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
+        for (( i = 2; i < 10; i++ ))
+            do
+            echo -n "-cat video000" >> videoprocessing.txt
+            echo -n "$i" >> videoprocessing.txt
+            echo -n ".h264 " >> videoprocessing.txt
+        done
+        for (( i = 10; i <= $numvid; i++ ))
+            do 
+            echo -n "-cat video00" >> videoprocessing.txt
+            echo -n "$i" >> videoprocessing.txt
+            echo -n ".h264 " >> videoprocessing.txt
+        done
+    echo -n "finalvideo.mp4" >> videoprocessing.txt 
 fi
 
 $(sed -n '1p' videoprocessing.txt)
