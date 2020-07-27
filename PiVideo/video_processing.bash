@@ -34,7 +34,7 @@ then
             echo -n "$i" >> videoprocessing.txt
             echo -n  ".h264 " >> videoprocessing.txt
         done
-        for i in (( i = 10; i <= 99; i++ ))
+        for (( i = 10; i <= 99; i++ ))
             do
             echo -n "-cat video00" >> videoprocessing.txt
             echo -n "$i" >> videoprocessing.txt
