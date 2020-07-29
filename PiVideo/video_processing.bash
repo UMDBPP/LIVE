@@ -11,6 +11,7 @@ read numvid
 
 rm videoprocessing.txt
 
+
 if [[ "$numvid" -lt "10" ]]
 then
     echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
@@ -23,36 +24,38 @@ then
     echo -n "finalvideo.mp4" >> videoprocessing.txt
 fi
 
-if [[ "$numvid" -ge "10" ]]
-then
-    if [[ "$numvid" -ge "100" ]]
-    then 
-        echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
-        for (( i = 2; i <= 9; i++ ))
-            do
-            echo -n "-cat video000" >> videoprocessing.txt
-            echo -n "$i" >> videoprocessing.txt
-            echo -n  ".h264 " >> videoprocessing.txt
-        done
-        for i in (( i = 10; i <= 99; i++ ))
-            do
-            echo -n "-cat video00" >> videoprocessing.txt
-            echo -n "$i" >> videoprocessing.txt
-            echo -n ".h264 " >> videoprocessing.txt
-        done
-        for (( i = 100; i <= $numvid; i++ ))
-            do
-            echo -n "-cat video0" >> videoprocessing.txt
-            echo -n "$i" >> videoprocessing.txt
-            echo -n ".h264 " >> videoprocessing.txt
-        done
-        echo -n "finalvideo.mp4" >> videoprocessing.txt
-    fi
 
-elif [[ "$numvid" -lt "100" ]] && [[ "$numvid" -gt "10" ]]
-    then	
+if [[ "$numvid" -ge "100" ]]
+then 
     echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
-    for (( i = 2; i <= 10; i++ ))
+    for (( i = 2; i <= 9; i++ ))
+        do
+        echo -n "-cat video000" >> videoprocessing.txt
+        echo -n "$i" >> videoprocessing.txt
+        echo -n  ".h264 " >> videoprocessing.txt
+    done
+    for (( i = 10; i <= 99; i++ ))
+        do
+        echo -n "-cat video00" >> videoprocessing.txt
+        echo -n "$i" >> videoprocessing.txt
+        echo -n ".h264 " >> videoprocessing.txt
+    done
+    for (( i = 100; i <= $numvid; i++ ))
+        do
+        echo -n "-cat video0" >> videoprocessing.txt
+        echo -n "$i" >> videoprocessing.txt
+        echo -n ".h264 " >> videoprocessing.txt
+    done
+    echo -n "finalvideo.mp4" >> videoprocessing.txt
+fi
+
+
+if [[ "$numvid" -ge "10" ]] && [[ "$numvid" -lt "100" ]]
+then
+    
+    echo -n "MP4Box -add video0001.h264 " >> videoprocessing.txt
+    
+    for (( i = 2; i < 10; i++ ))
         do
         echo -n "-cat video000" >> videoprocessing.txt
         echo -n "$i" >> videoprocessing.txt
@@ -60,11 +63,12 @@ elif [[ "$numvid" -lt "100" ]] && [[ "$numvid" -gt "10" ]]
     done
     for (( i = 10; i <= $numvid; i++ ))
         do 
-        echo -n "-cat video00"
-        echo -n "$i"
+        echo -n "-cat video00" >> videoprocessing.txt
+        echo -n "$i" >> videoprocessing.txt
         echo -n ".h264 " >> videoprocessing.txt
     done
-    echo -n "finalvideo.mp4" >> videoprocessing.txt
+
+    echo -n "finalvideo.mp4" >> videoprocessing.txt 
 
 fi
 
