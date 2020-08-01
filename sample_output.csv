@@ -1,1 +1,1 @@
-X	Y	Z_PID_Input	Setpoint_PID	Servo_Output	Temp_degC	Sys_cal	G_cal	A_cal	M_cal
+﻿X,Y,Z_PID_Input,Setpoint_PID,Servo_PID_Output,Temp_degC,Sys_cal,G_cal,A_cal,M_cal
