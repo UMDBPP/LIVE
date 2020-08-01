@@ -109,7 +109,6 @@ void loop(void)
   Serial.print(Setpoint, 4);
   Serial.print("\tServo Output: ");
   Serial.print(Output, 3);
-  Serial.print("   ");
   Serial.print("\tTemp: ");
   Serial.print(temp);
 
