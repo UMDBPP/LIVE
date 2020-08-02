@@ -42,20 +42,19 @@ void displayCalStatus(void)
   bno.getCalibration(&system, &gyro, &accel, &mag);
 
   // ! for data to be ignored until system calibration is > 0
-  Serial.print("\t");
-  if (!system)
-  {
-    Serial.print("! ");
-  }
+//  Serial.print("\t");
+//  if (!system)
+//  {
+//    Serial.print("! ");
+//  }
 
   // displays individual calibration values
-  Serial.print("Sys:");
   Serial.print(system, DEC);
-  Serial.print(" G:");
+  Serial.print("\t");
   Serial.print(gyro, DEC);
-  Serial.print(" A:");
+  Serial.print("\t");
   Serial.print(accel, DEC);
-  Serial.print(" M:");
+  Serial.print("\t");
   Serial.print(mag, DEC);
  
 }
@@ -82,6 +81,21 @@ void setup(void)
   delay(1000);
 
   bno.setExtCrystalUse(true);
+
+  
+  // prints all desired column headers to serial monitor
+  Serial.print("X");
+  Serial.print("\tY");
+  Serial.print("\tZ_PID_Input");
+  Serial.print("\tSetpoint_PID");
+  Serial.print("\tServo_PID_Output");
+  Serial.print("\tTemp_degC");
+  Serial.print("\tSys_cal");
+  Serial.print("\tG_cal");
+  Serial.print("\tA_cal");
+  Serial.print("\tM_cal");
+
+  Serial.println(""); // new line for subsequent data output
 }
 
 void loop(void)
@@ -96,21 +110,19 @@ void loop(void)
 
   uint8_t temp = bno.getTemp(); // gets current temperature
 
-  // prints all desired values to serial monitor
-  Serial.print("X: ");
+  // prints all desired column headers to serial monitor
   Serial.print(event.orientation.x, 3);
-  Serial.print("\tY: ");
+  Serial.print("\t");
   Serial.print(event.orientation.y, 3);
-  Serial.print("\tZ: ");
+  Serial.print("\t");
   Serial.print(event.orientation.z, 3);
-  Serial.print("\tInput: ");
-  Serial.print(Input, 3);
-  Serial.print("\tSetpoint: ");
+  Serial.print("\t");
   Serial.print(Setpoint, 4);
-  Serial.print("\tServo Output: ");
+  Serial.print("\t");
   Serial.print(Output, 3);
-  Serial.print("\tTemp: ");
+  Serial.print("\t");
   Serial.print(temp);
+  Serial.print("\t");
 
   displayCalStatus(); // display calibration status for each sensor event
 
