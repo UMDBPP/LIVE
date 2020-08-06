@@ -63,6 +63,7 @@ void displayCalStatus(void)
 void setup(void)
 {
   Serial.begin(9600);
+  while(!Serial){}
   
   myservo.attach(SERVO_PIN);  
   myservo.write(90); // starts servo at home position of 90deg

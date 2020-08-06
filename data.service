@@ -1,0 +1,15 @@
+[Unit]
+Description=Data
+
+[Service]
+Type=simple
+ExecStart=/bin/python3 -u data_logging.py
+WorkingDirectory=/home/pi/LIVE
+Restart=always
+RestartSec=1s
+StartLimitIntervalSec=0
+StartLimitBurst=0
+User=pi
+
+[Install]
+WantedBy=multi-user.target
