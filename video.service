@@ -7,7 +7,7 @@ Type=simple
 ExecStart=/bin/bash /bin/LIVE/PiVideo/stream1080.bash
 Restart=always
 RestartSec=1s
-StartLimitIntervalSec=0
+#StartLimitIntervalSec=0
 StartLimitBurst=0
 
 [Install]
