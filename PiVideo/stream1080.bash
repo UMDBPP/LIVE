@@ -4,6 +4,9 @@
 # The video feed will be captured for 2.5 hours, and the feed will be saved in 20 second increments as an h264 file.
 
 # Change to path where you would like segmented videos to be stored.
+cd /home/pi/LIVE
+mkdir segmented_videos
+cd
 cd /home/pi/LIVE/segmented_videos
 
 # -t 100000 = video time limit is 100 seconds
