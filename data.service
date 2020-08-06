@@ -1,0 +1,14 @@
+[Unit]
+Description=Video
+
+[Service]
+Type=simple
+ExecStart=/bin/python3 -u data_logging.py
+WorkingDirectory=/LIVE
+Restart=always
+RestartSec=1s
+StartLimitIntervalSec=0
+StartLimitBurst=0
+
+[Install]
+WantedBy=multi-user.target
