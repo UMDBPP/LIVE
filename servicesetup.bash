@@ -5,6 +5,7 @@
 sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 sudo cp video.service /etc/systemd/system
+sudo cp data.service /etc/systemd/system
 
 cd 
 cd LIVE
