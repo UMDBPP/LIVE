@@ -3,8 +3,7 @@ Description=Data
 
 [Service]
 Type=simple
-ExecStart=/bin/python3 -u data_logging.py
-WorkingDirectory=/home/pi/LIVE
+ExecStart=/bin/python3 /home/pi/LIVE/data_logging.py
 Restart=always
 RestartSec=1s
 StartLimitIntervalSec=0
