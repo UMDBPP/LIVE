@@ -17,6 +17,12 @@ chmod +x stream1080.bash
 sudo systemctl enable video.service
 sudo systemctl start video.service
 
-sudo systemctl enable data.service
-sudo systemctl start data.service
+cd ..
+
+until  python3 ~/LIVE/data_logging.py
+do
+	sleep 5
+done
+# sudo systemctl enable data.service
+# sudo systemctl start data.service
 
