@@ -15,6 +15,8 @@ cd PiVideo
 chmod +x stream1080.bash
 
 sudo systemctl enable video.service
+sudo systemctl start video.service
 
 sudo systemctl enable data.service
+sudo systemctl start data.service
 
