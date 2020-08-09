@@ -11,6 +11,9 @@ chmod +x data_logging.py
 cd PiVideo
 chmod +x stream1080.bash
 
+cd
+cd LIVE
+
 sudo cp video.service /etc/systemd/system
 systemctl daemon-reload
 
