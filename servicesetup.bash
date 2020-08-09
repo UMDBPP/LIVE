@@ -4,15 +4,18 @@
 
 sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
-sudo cp video.service /etc/systemd/system
-# sudo cp data.service /etc/systemd/system # does not work
-
 cd 
 cd LIVE
 chmod +x data_logging.py
 
 cd PiVideo
 chmod +x stream1080.bash
+
+sudo cp video.service /etc/systemd/system
+systemctl daemon-reload
+
+sudo cp data.service /etc/systemd/system # does not work
+systemctl daemon-reload
 
 sudo systemctl enable video.service
 sudo systemctl start video.service
