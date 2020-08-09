@@ -3,7 +3,7 @@ Using serial communication, logs all data from PIDcontroller.ino on Arduino onto
 '''
 
 # shebang for python3, reccomended to run this software with python 3.5.3
-# !/usr/bin/env python 3
+# !/usr/bin/env python3
 
 # needed modules
 import serial  # install with "pip3 install pyserial"
