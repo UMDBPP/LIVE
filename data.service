@@ -6,7 +6,6 @@ Type=simple
 ExecStart=/usr/bin/env python3 /home/pi/LIVE/data_logging.py
 Restart=always
 RestartSec=1s
-StartLimitIntervalSec=0
 StartLimitBurst=0
 User=pi
 
