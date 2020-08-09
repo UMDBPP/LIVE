@@ -8,6 +8,7 @@ Using serial communication, logs all data from PIDcontroller.ino on Arduino onto
 # needed modules
 import serial  # install with "pip3 install pyserial"
 import csv  # install with "pip3 install python-csv"
+import time
 
 if __name__ == '__main__':
     # find correct device with "ls /dev/tty*"
@@ -18,7 +19,8 @@ if __name__ == '__main__':
             line=ser.readline()  # reads in all bytes of data
             line=line.decode('utf-8').split()  # decodes line with utf-8 and splits into list
             print(line)  # sanity check - prints each line to terminal
-            csvfile=open('data.csv','a',newline='\n')  # opens csv file
+            csvfile=open('/home/pi/LIVE/data.csv','a',newline='\n')  # opens csv file
             obj=csv.writer(csvfile)  # creates csv file object
             obj.writerow(line)  # writes each line to a new row in csv
+            time.sleep(0.5)
             csvfile.close()

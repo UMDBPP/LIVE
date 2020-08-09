@@ -5,7 +5,7 @@
 sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 sudo cp video.service /etc/systemd/system
-sudo cp data.service /etc/systemd/system
+# sudo cp data.service /etc/systemd/system # does not work
 
 cd 
 cd LIVE
@@ -17,12 +17,6 @@ chmod +x stream1080.bash
 sudo systemctl enable video.service
 sudo systemctl start video.service
 
-cd ..
-
-until  python3 ~/LIVE/data_logging.py
-do
-	sleep 5
-done
 # sudo systemctl enable data.service
 # sudo systemctl start data.service
 
