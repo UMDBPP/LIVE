@@ -23,6 +23,6 @@ systemctl daemon-reload
 sudo systemctl enable video.service
 sudo systemctl start video.service
 
-# sudo systemctl enable data.service
-# sudo systemctl start data.service
+sudo systemctl enable data.service
+sudo systemctl start data.service
 
