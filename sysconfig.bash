@@ -10,6 +10,7 @@ sudo apt-get install cmake
 sudo apt install python3-pip
 pip3 install pyserial
 pip3 install python-csv
+sudo apt install -y gpac
 
 git clone https://github.com/UMDBPP/userland.git
 
