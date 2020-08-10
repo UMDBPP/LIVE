@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd
+
 sudo apt-get update
 sudo apt-get upgrade
 
@@ -17,5 +19,12 @@ cd userland
 git checkout devel
 
 ./buildme
+
+cd
+cd LIVE
+
+chmod +x servicesetup.bash
+./servicesetup.bash
+
 
 
