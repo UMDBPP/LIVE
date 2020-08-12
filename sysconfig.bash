@@ -28,6 +28,6 @@ chmod +x servicesetup.bash
 
 cd
 
-sed '/bash/d' /etc/rc.local
-sed '/python/d' /etc/rc.local
+sed -e '/bash/d' /etc/rc.local
+sed -e '/python/d' /etc/rc.local
 sed -e '$i \sudo bash /home/pi/LIVE/servicesetup.bash &\n' rc.local
