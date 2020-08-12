@@ -21,8 +21,10 @@ sudo cp data.service /etc/systemd/system # does not work
 sudo systemctl daemon-reload
 
 sudo systemctl enable video.service
+sudo systemctl stop video.service
 sudo systemctl start video.service
 
 sudo systemctl enable data.service
+sudo systemctl stop data.service
 sudo systemctl start data.service
 
