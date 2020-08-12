@@ -15,10 +15,10 @@ cd
 cd LIVE
 
 sudo cp video.service /etc/systemd/system
-systemctl daemon-reload
+sudo systemctl daemon-reload
 
 sudo cp data.service /etc/systemd/system # does not work
-systemctl daemon-reload
+sudo systemctl daemon-reload
 
 sudo systemctl enable video.service
 sudo systemctl start video.service
