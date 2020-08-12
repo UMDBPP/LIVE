@@ -25,7 +25,4 @@ cd
 cd LIVE
 
 chmod +x servicesetup.bash
-./servicesetup.bash
-
-
 
