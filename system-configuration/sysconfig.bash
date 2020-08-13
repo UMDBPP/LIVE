@@ -23,6 +23,7 @@ git checkout devel
 
 cd
 cd LIVE
+cd system-configuration
 
 chmod +x servicesetup.bash
 
