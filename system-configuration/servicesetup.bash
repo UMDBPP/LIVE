@@ -6,13 +6,17 @@ sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 cd 
 cd LIVE
+cd data-PID
 chmod +x data_logging.py
 
-cd PiVideo
+cd
+cd LIVE
+cd video
 chmod +x stream1080.bash
 
 cd
 cd LIVE
+cd system-configuration
 
 sudo cp video.service /etc/systemd/system
 sudo systemctl daemon-reload
