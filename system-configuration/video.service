@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /home/pi/LIVE/PiVideo/stream1080.bash
+ExecStart=/bin/bash /home/pi/LIVE/video/stream1080.bash
 Restart=always
 RestartSec=1s
 StartLimitBurst=0
