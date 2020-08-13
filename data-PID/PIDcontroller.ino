@@ -126,7 +126,7 @@ void loop(void)
 
   displayCalStatus(); // display calibration status for each sensor event
 
-  Serial.println(""); // new line for next event
+  Serial.println(""); // new line for next event 
   
   delay(BNO055_SAMPLERATE_DELAY_MS); // delay between data requests for sensor
 }
