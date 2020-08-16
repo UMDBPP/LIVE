@@ -12,6 +12,8 @@ pip3 install pyserial
 pip3 install python-csv
 sudo apt install -y gpac
 
+cd
+
 git clone https://github.com/UMDBPP/userland.git
 
 cd
