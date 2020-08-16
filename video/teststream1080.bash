@@ -13,7 +13,7 @@ then
       cd
       if [ -d "/home/pi/LIVE/segmented_videos$i" ]
       then 
-      
+      i++
       else 
         cd 
         cd /home/pi/LIVE
