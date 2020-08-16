@@ -8,8 +8,8 @@ sudo apt-get upgrade
 sudo apt-get install vlc
 sudo apt-get install cmake
 sudo apt install python3-pip
-pip3 install pyserial
-pip3 install python-csv
+sudo pip3 install pyserial
+sudo pip3 install python-csv
 sudo apt install -y gpac
 
 cd
