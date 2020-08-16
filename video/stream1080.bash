@@ -22,6 +22,8 @@ else
         cd 
         cd /home/pi/LIVE
         mkdir segmented_videos$i
+        cd
+        cd /home/pi/LIVE/segmented_videos$i
       fi
     done
 fi
