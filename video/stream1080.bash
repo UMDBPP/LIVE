@@ -6,25 +6,35 @@
 # Change to path where you would like segmented videos to be stored.
 
 cd
+
 if [ -d "/home/pi/LIVE/segmented_videos" ]
 then 
+
   for (( i = 2; i <= 100; i++ ))
     do 
+
       cd
+      
       if [ -d "/home/pi/LIVE/segmented_videos$i" ]
       then 
+        
         continue
+
       else 
+        
         cd 
         cd /home/pi/LIVE
         mkdir segmented_videos$i
         cd
         cd /home/pi/LIVE/segmented_videos$i
         break
+
       fi
+
     done
     
 else
+
   cd
   cd /home/pi/LIVE
   mkdir segmented_videos
