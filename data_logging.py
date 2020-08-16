@@ -4,6 +4,8 @@ Using serial communication, logs all data from PIDcontroller.ino on Arduino onto
 
 # shebang for python3, reccomended to run this software with python 3.5.3
 # !/usr/bin/env python 3
+$ sudo mkdir /mnt/ramdisk    # storing the data to RAM
+$ sudo mount -t tmpfs none /mnt/ramdisk
 
 # needed modules
 import serial  # install with "pip3 install pyserial"
@@ -22,9 +24,17 @@ if __name__ == '__main__':
             #obj=csv.writer(csvfile)  # creates csv file object
             #obj.writerow(line)  # writes each line to a new row in csv
             #csvfile.close()
+            i=0
+            path="data"+ str(i)+ ".csv"
+            for i in range (10):
+              if os.path.exists("data"+ str(i)+ ".csv")==False:  # to check if the file already exists
+                file = open("data"+ str(i)+ ".csv", "a", encoding='utf-8')
+                x=os.stat("data"+ str(i)+ ".csv").st_size
+                for x in range (0,3):     # to write 3 lines of data into a file
+                   file.write(str(line))
+                file.close()
+                i=i+1                   # to increase the i value 
+
+              i=i+1                    # to increase the valu of i when the file already exists
             
-            for i in range(100):   #just testing with a random number
-                  with io.open('data' + str(i) + '.csv', 'a', encoding='utf-8') as f: 
-                          f.write(str(line))
-                            f.close()
-                            
+           
