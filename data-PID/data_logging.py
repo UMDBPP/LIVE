@@ -2,13 +2,11 @@
 Using serial communication, logs all data from PIDcontroller.ino on Arduino onto RPi data.csv
 '''
 
-# shebang for python3, reccomended to run this software with python 3.5.3
-# !/usr/bin/env python3
-
-# needed modules
-import serial  # install with "pip3 install pyserial"
-import csv  # install with "pip3 install python-csv"
+# needed modules #
+import serial  # pip3 install pyserial
+import csv  # pip3 install python-csv
 import time
+import os
 
 if __name__ == '__main__':
     # find correct device with "ls /dev/tty*"
@@ -19,6 +17,9 @@ if __name__ == '__main__':
             line=ser.readline()  # reads in all bytes of data
             line=line.decode('utf-8').split()  # decodes line with utf-8 and splits into list
             print(line)  # sanity check - prints each line to terminal
+            if line[5] != 'Temp_degC':
+                if int(line[5]) >= 82:
+                    os.system("sudo shutdown -h now")
             csvfile=open('/home/pi/LIVE/data.csv','a',newline='\n')  # opens csv file
             obj=csv.writer(csvfile)  # creates csv file object
             obj.writerow(line)  # writes each line to a new row in csv
