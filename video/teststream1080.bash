@@ -8,24 +8,27 @@
 cd
 if [ -d "/home/pi/LIVE/segmented_videos" ]
 then 
-  cd
-  cd /home/pi/LIVE/segmented_videos
-else
   for (( i = 2; i <= 100; i++ ))
     do 
       cd
       if [ -d "/home/pi/LIVE/segmented_videos$i" ]
       then 
-        cd
-        cd /home/pi/LIVE/segmented_videos$i
+      
       else 
         cd 
         cd /home/pi/LIVE
         mkdir segmented_videos$i
         cd
         cd /home/pi/LIVE/segmented_videos$i
+        break
       fi
     done
+    
+else
+  cd
+  mkdir segmented
+  cd /home/pi/LIVE/segmented_videos
+  
 fi
 
 
