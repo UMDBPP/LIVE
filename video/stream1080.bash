@@ -5,10 +5,16 @@
 
 # Change to path where you would like segmented videos to be stored.
 cd
-cd /home/pi/LIVE
-mkdir segmented_videos
-cd
-cd /home/pi/LIVE/segmented_videos
+if [ -d "/home/pi/LIVE/segmented_videos" ]
+then 
+  cd
+  cd /home/pi/LIVE/segmented_videos
+else
+  mkdir segmented_videos
+  cd
+  cd /home/pi/LIVE/segmented_videos
+fi
+  
 
 # -t 100000 = video time limit is 100 seconds
 # -sg 5000 = video segments every 5 seconds
