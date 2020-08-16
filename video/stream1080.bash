@@ -4,6 +4,7 @@
 # The video feed will be captured for 2.5 hours, and the feed will be saved in 20 second increments as an h264 file.
 
 # Change to path where you would like segmented videos to be stored.
+
 cd
 if [ -d "/home/pi/LIVE/segmented_videos" ]
 then 
