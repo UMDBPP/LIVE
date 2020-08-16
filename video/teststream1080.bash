@@ -26,7 +26,9 @@ then
     
 else
   cd
-  mkdir segmented
+  cd /home/pi/LIVE
+  mkdir segmented_videos
+  cd
   cd /home/pi/LIVE/segmented_videos
   
 fi
