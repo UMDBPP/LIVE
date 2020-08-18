@@ -31,7 +31,7 @@ if __name__ == '__main__':
                 file = open("data"+ str(i)+ ".csv", "a", encoding='utf-8')
                 x=os.stat("data"+ str(i)+ ".csv").st_size
                 for x in range (0,3):     # to write 3 lines of data into a file
-                   file.write(str(line))
+                   file.write(line)
                 file.close()
                 i=i+1                   # to increase the i value 
 
