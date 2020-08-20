@@ -41,13 +41,6 @@ void displayCalStatus(void)
   system = gyro = accel = mag = 0;
   bno.getCalibration(&system, &gyro, &accel, &mag);
 
-  // ! for data to be ignored until system calibration is > 0
-//  Serial.print("\t");
-//  if (!system)
-//  {
-//    Serial.print("! ");
-//  }
-
   // displays individual calibration values
   Serial.print(system, DEC);
   Serial.print("\t");
@@ -104,7 +97,7 @@ void loop(void)
   sensors_event_t event;
   bno.getEvent(&event);
   
-  Input = event.orientation.z; // BNO055 pitch input
+  Input = -event.orientation.z; // BNO055 pitch input
   myPID.Compute(); // process with PID library
   myservo.write(Output); // servo outputs PID corrected values
 
