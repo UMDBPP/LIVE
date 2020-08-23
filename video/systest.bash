@@ -2,5 +2,5 @@
 
 cd
 
-date_info = $(date +%D__%T)
+date_info=$(date +%D__%T)
 echo "$date_info"
