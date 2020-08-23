@@ -4,6 +4,7 @@ import serial
 import csv
 import os
 import time
+from datetime import datetime
 
 
 
@@ -12,11 +13,15 @@ if __name__ =='__main__':
   ser.flush()                                        # # flushes any I/O buffer to avoid sending incomplete data at start of serial communication
        
     
-j=1
+# j=1
+now = datetime.now()
+current_dt = now.strftime("%b-%d-%Y_%H-%M-%S")
+if os.path.isdir('/home/pi/LIVE/data_files') == False:
+  os.mkdir('/home/pi/LIVE/data_files')
 while True:
- if os.path.isdir('/home/pi/LIVE/datafile_'+str(j))==False:      #checking if the directory exists
-  os.mkdir('/home/pi/LIVE/datafile_'+str(j))
-  os.chdir('/home/pi/LIVE/datafile_'+str(j))                       # changing the path 
+ if os.path.isdir('/home/pi/LIVE/data_files/'+str(current_dt))==False:      #checking if the directory exists
+  os.mkdir('/home/pi/LIVE/data_files/'+str(current_dt))
+  os.chdir('/home/pi/LIVE/data_files/'+str(current_dt))                       # changing the path 
   i=0
   while True:
      if ser.in_waiting>0:                                        # checks if data is available                                           # sanity check
@@ -24,7 +29,7 @@ while True:
         if os.path.exists(path)== False:                                        #checking if then file exists
             file=open("log" + str(i)+".csv", 'a', encoding='utf-8-sig')         # pening the file
             x=os.stat(path).st_size                                             # size of file
-            for x in range (0,30):                                              #writing 30 set of data to the file
+            for x in range (0,40):                                              #writing new file every 30 seconds
               obj=csv.writer(file)
               line=ser.readline()                                      # reads in all bytes of data
               line=line.decode('utf-8').split()                        # decodes line with utf-8 and splits into list
