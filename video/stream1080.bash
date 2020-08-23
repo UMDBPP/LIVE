@@ -9,7 +9,7 @@ cd
 
 # Create a folder with the name of the current date and time.
 
-date_info = $(date +%D__%T)
+date_info=$(date +%D__%T)
 
 cd /home/pi/LIVE
 mkdir $date_info
