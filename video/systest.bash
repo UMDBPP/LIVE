@@ -2,11 +2,5 @@
 
 cd
 
-git clone https://github.com/UMDBPP/userland.git
-
-cd 
-cd userland
-
-git checkout devel
-
-./buildme
+date_info = $(date +%D__%T)
+echo "$date_info"
