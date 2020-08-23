@@ -54,7 +54,7 @@ void displayCalStatus(void)
 
 void setup(void)
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while(!Serial){}
   
   myservo.attach(SERVO_PIN);  
@@ -97,7 +97,7 @@ void loop(void)
   sensors_event_t event;
   bno.getEvent(&event);
   
-  Input = -event.orientation.z; // BNO055 pitch input
+  Input = event.orientation.z; // BNO055 pitch input
   myPID.Compute(); // process with PID library
   myservo.write(Output); // servo outputs PID corrected values
 
