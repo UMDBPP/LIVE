@@ -12,10 +12,14 @@ cd
 date_info=$(date +%b-%d-%Y_%H-%M-%S)
 
 cd /home/pi/LIVE
+mkdir segmented_videos
+
+cd 
+cd /home/pi/LIVE/segmented_videos
 mkdir $date_info
 
 cd 
-cd /home/pi/LIVE/$date_info
+cd /home/pi/LIVE/segmented_videos/$date_info
 
 # -t 100000 = video time limit is 100 seconds
 # -sg 5000 = video segments every 5 seconds
