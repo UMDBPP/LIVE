@@ -1,6 +1,9 @@
 # LIVE software- Master Branch
  *Just a heads up this is only for final software go check beta or alfa for non-finalized software*
 
+# To run full software suite at boot:
+add 'sudo bash /home/pi/LIVE/servicesetup.bash &' to /etc/rc.local
+
 # Description
 There are 4 components to the flight software: video streaming, video recording, PID controller, and data logging.
 
