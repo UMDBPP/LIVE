@@ -36,11 +36,12 @@ for (( i = 1; i <= $numdir; i++ ))
     
     cd $placeholdervar2
     
+    rm videoprocessing.txt
+    rm finalvideoprocess.txt
+    
     numfilesinfolder=$(ls | wc -l)
     numvid=numfilesinfolder
     
-
-    rm videoprocessing.txt
     
     if [[ "$numvid" -eq "0" ]]
     then 
@@ -156,6 +157,9 @@ for (( i = 1; i <= $numdir; i++ ))
     mv /home/pi/LIVE/segmented_videos/$placeholdervar2/finalvideo$i /home/pi/LIVE/processed_videos/$flight
     
 done
+
+cd 
+cd /home/pi/LIVE/processed_videos/$flight
 
 rm finalvideoprocess.txt
 
