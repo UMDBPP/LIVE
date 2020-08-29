@@ -36,8 +36,8 @@ for (( i = 1; i <= $numdir; i++ ))
     
     cd $placeholdervar2
     
-    numfilesinfolder$i=$(ls | wc -l)
-    numvid=numfilesinfolder$i
+    numfilesinfolder=$(ls | wc -l)
+    numvid=numfilesinfolder
     
 
     rm videoprocessing.txt
