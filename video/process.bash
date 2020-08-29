@@ -16,11 +16,12 @@ for (( i = 1; i <= $numdir; i++ ))
     then
         echo "Enter the name of the first folder:"
         read folder1
-    fi
     
     else
     echo "Enter the name of folder $i:"
     read folder$i
+    
+    fi
     
 done
 
