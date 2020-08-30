@@ -2,6 +2,8 @@
 
 # To install MP4Box, run 'sudo apt install -y gpac' in the terminal window.
 
+cd /media/pi/RUBEN1/segmented_videos/AUg-29-2020_23-02-29
+
 echo "Enter the number of segmented video clips recorded:"
 
 # The number inputted into the terminal will be stored in the variable 'numvid'
