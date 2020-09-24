@@ -14,7 +14,7 @@ for (( i = 1; i <= $numdir; i++ ))
     do
     if [ $numdir -eq 1 ]
     then
-        echo "Enter the name of the first folder:"
+        echo "Enter the name of the folder:"
         read folder1
     
     else
