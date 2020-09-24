@@ -19,7 +19,8 @@ for (( i = 1; i <= $numdir; i++ ))
     
     else
     echo "Enter the name of folder $i:"
-    read folder$i
+    read foldername
+    folder[$i]=foldername
     
     fi
     
@@ -31,13 +32,13 @@ for (( i = 1; i <= $numdir; i++ ))
     cd /home/pi/LIVE
     cd segmented_videos
     
-    placeholdervar1=folder$i
+    placeholdervar1=folder[$i]
     placeholdervar2=${!placeholdervar1}
     
     cd $placeholdervar2
     
-    numfilesinfolder$i=$(ls | wc -l)
-    numvid=numfilesinfolder$i
+    numfilesinfolder=$(ls | wc -l)
+    numvid=numfilesinfolder
     
 
     rm videoprocessing.txt
@@ -124,7 +125,7 @@ for (( i = 1; i <= $numdir; i++ ))
     cd /home/pi/LIVE
     cd segmented_videos
     
-    placeholdervar1=folder$i
+    placeholdervar1=folder[$i]
     placeholdervar2=${!placeholdervar1}
     
     cd $placeholdervar2
