@@ -42,6 +42,8 @@ for (( i = 1; i <= $numdir; i++ ))
     
 
     rm videoprocessing.txt
+    
+    placeholdervar3=$i
 
 
     if [[ "$numvid" -lt "10" ]]
@@ -100,7 +102,9 @@ for (( i = 1; i <= $numdir; i++ ))
             echo -n ".h264 " >> videoprocessing.txt
         done
 
-        echo -n "finalvideo.mp4" >> videoprocessing.txt 
+        echo -n "finalvideo" >> videoprocessing.txt 
+        echo -n "$placeholdervar3" >> videoprocessing.txt
+        echo -n ".mp4" >> videoprocessing.txt
 
     fi
 
