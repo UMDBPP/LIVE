@@ -20,7 +20,7 @@ for (( i = 1; i <= $numdir; i++ ))
     else
     echo "Enter the name of folder $i:"
     read foldername
-    folder[$i]=$(foldername)
+    folder[$i]=$foldername
     
     fi
     
