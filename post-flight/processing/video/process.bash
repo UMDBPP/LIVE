@@ -109,6 +109,8 @@ for (( i = 1; i <= $numdir; i++ ))
     fi
 
     $(sed -n '1p' videoprocessing.txt)
+    
+    echo "$i yeah boi"
 
 done
 
