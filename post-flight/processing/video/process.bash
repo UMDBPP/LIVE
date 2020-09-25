@@ -58,7 +58,9 @@ for (( i = 1; i <= $numdir; i++ ))
             echo -n "$j" >> videoprocessing.txt
             echo -n ".h264 " >> videoprocessing.txt
         done
-        echo -n "finalvideo.mp4" >> videoprocessing.txt
+        echo -n "finalvideo" >> videoprocessing.txt 
+        echo -n "$placeholdervar3" >> videoprocessing.txt
+        echo -n ".mp4" >> videoprocessing.txt
     fi
 
 
@@ -83,7 +85,9 @@ for (( i = 1; i <= $numdir; i++ ))
             echo -n "$w" >> videoprocessing.txt
             echo -n ".h264 " >> videoprocessing.txt
         done
-        echo -n "finalvideo.mp4" >> videoprocessing.txt
+        echo -n "finalvideo" >> videoprocessing.txt 
+        echo -n "$placeholdervar3" >> videoprocessing.txt
+        echo -n ".mp4" >> videoprocessing.txt
     fi
 
 
