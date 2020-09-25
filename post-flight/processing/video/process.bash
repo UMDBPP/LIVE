@@ -159,6 +159,9 @@ for (( i = 1; i <= $numdir; i++ ))
     
 done
 
+cd 
+cd /home/pi/LIVE/processed_videos/$flight
+
 rm finalvideoprocess.txt
 
 echo -n "MP4Box -add " >> finalvideoprocess.txt
