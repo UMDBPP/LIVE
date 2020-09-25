@@ -108,12 +108,24 @@ for (( i = 1; i <= $numdir; i++ ))
 
     fi
 
-    $(sed -n '1p' videoprocessing.txt)
-    
-    echo "$i yeah boi"
-
 done
 
+for (( i = 1; i <= $numdir; i++ ))
+    do
+    cd 
+    cd /home/pi/LIVE
+    cd segmented_videos
+    
+    placeholdervar1=folder[$i]
+    placeholdervar2=${!placeholdervar1}
+    
+    cd $placeholdervar2
+    
+    $(sed -n '1p' videoprocessing.txt)
+
+done
+       
+    
 cd 
 cd /home/pi/LIVE
 mkdir processed_videos
