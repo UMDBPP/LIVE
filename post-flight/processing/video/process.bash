@@ -191,5 +191,16 @@ cd /home/pi/LIVE/processed_videos/$flight
 $(sed -n '1p' finalvideoprocess.txt)
 
 cd
+cd /home/pi/LIVE/processed_videos/$flight
+
+rm finalvideoprocess.txt
+
+for (( i = 1; i <= $numdir; i++ ))
+    do 
+    
+    rm finalvideo$i.mp4
+
+done
+    
 
 echo "Video processing is complete!"
