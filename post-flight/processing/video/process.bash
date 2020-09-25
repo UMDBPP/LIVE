@@ -37,12 +37,15 @@ for (( i = 1; i <= $numdir; i++ ))
     
     cd $placeholdervar2
     
+    rm videoprocessing.txt
+    rm finalvideoprocess.txt
+    rm finalvideo.mp4
+    rm finalvideo$i.mp4
+    
     numfilesinfolder=$(ls | wc -l)
     numvid=numfilesinfolder
-    
-
-    rm videoprocessing.txt
-    
+   
+   
     placeholdervar3=$i
 
 
@@ -148,14 +151,14 @@ for (( i = 1; i <= $numdir; i++ ))
     
     cd $placeholdervar2
     
-    mv finalvideo.mp4 finalvideo$i.mp4
-    mv /home/pi/LIVE/segmented_videos/$placeholdervar2/finalvideo$i /home/pi/LIVE/processed_videos/$flight
+    mv /home/pi/LIVE/segmented_videos/$placeholdervar2/finalvideo$i.mp4 /home/pi/LIVE/processed_videos/$flight
     
 done
 
 rm finalvideoprocess.txt
 
 echo -n "MP4Box -add " >> finalvideoprocess.txt
+echo -n "finalvideo1.mp4 " >> finalvideoprocess.txt
 
 for (( i = 1; i <= $numdir; i++ ))
     do
@@ -163,7 +166,7 @@ for (( i = 1; i <= $numdir; i++ ))
     cd /home/pi/LIVE/processed_videos/$flight
     if [ $i -eq 1 ]
     then
-        echo -n "finalvideo1.mp4 " >> finalvideoprocess.txt
+        continue
     else
         echo -n "-cat finalvideo" >> finalvideoprocess.txt
         echo -n "$i" >> finalvideoprocess.txt
