@@ -17,3 +17,6 @@ if os.path.isdir(direc) == True:
             fout.write(line)
         f.close() # not really needed
     fout.close()
+   
+if os.path.isdir(direc) == False:
+    print("The entered filepath does not exist. Please re-run the script and enter the correct filepath.")
