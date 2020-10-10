@@ -4,6 +4,9 @@
 #include <utility/imumaths.h>
 #include <Servo.h>
 #include <PID_v1.h>
+#include <SPI.h>
+#include <SD.h>
+
 
 /*
    For BNO055 Calibration, refer to wiki: https://github.com/UMDBPP/LIVE/wiki/BNO055-Calibration
@@ -51,6 +54,8 @@ void displayCalStatus(void)
   Serial.print(mag, DEC);
  
 }
+
+File AccelerometerData;
 
 void setup(void)
 {
