@@ -84,20 +84,22 @@ void setup(void)
 
   bno.setExtCrystalUse(true);
 
-  
-  // prints all desired column headers to serial monitor
-  dataFile.print("X");
-  dataFile.print("\tY");
-  dataFile.print("\tZ_PID_Input");
-  dataFile.print("\tSetpoint_PID");
-  dataFile.print("\tServo_PID_Output");
-  dataFile.print("\tTemp_degC");
-  dataFile.print("\tSys_cal");
-  dataFile.print("\tG_cal");
-  dataFile.print("\tA_cal");
-  dataFile.print("\tM_cal");
-
-  dataFile.println(""); // new line for subsequent data output
+  if (dataFile) 
+  {
+     // prints all desired column headers to serial monitor
+     dataFile.print("X");
+     dataFile.print("\tY");
+     dataFile.print("\tZ_PID_Input");
+     dataFile.print("\tSetpoint_PID");
+     dataFile.print("\tServo_PID_Output");
+     dataFile.print("\tTemp_degC");
+     dataFile.print("\tSys_cal");
+     dataFile.print("\tG_cal");
+     dataFile.print("\tA_cal");
+     dataFile.print("\tM_cal");
+     dataFile.println(""); // new line for subsequent data output
+  }
+   
 }
 
 void loop(void)
