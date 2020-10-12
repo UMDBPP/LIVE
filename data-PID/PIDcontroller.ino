@@ -4,10 +4,13 @@
 #include <utility/imumaths.h>
 #include <Servo.h>
 #include <PID_v1.h>
+#include <SPI.h>
+#include <SD.h>
+
 
 /*
    For BNO055 Calibration, refer to wiki: https://github.com/UMDBPP/LIVE/wiki/BNO055-Calibration
-   
+
    Connections - Teensy 3.5, BNO055, Servo
    ===========
    ***BNO055 + Teensy 3.5***
@@ -22,6 +25,8 @@
 */
 
 Servo myservo; // creates servo object
+
+File dataFile;
 
 #define SERVO_PIN 9 // use pin 9 for servo control
 #define BNO055_SAMPLERATE_DELAY_MS (100) // set the delay between fresh samples
@@ -42,84 +47,104 @@ void displayCalStatus(void)
   bno.getCalibration(&system, &gyro, &accel, &mag);
 
   // displays individual calibration values
-  Serial.print(system, DEC);
-  Serial.print("\t");
-  Serial.print(gyro, DEC);
-  Serial.print("\t");
-  Serial.print(accel, DEC);
-  Serial.print("\t");
-  Serial.print(mag, DEC);
- 
+  dataFile.print(system, DEC);
+  dataFile.print("\t");
+  dataFile.print(gyro, DEC);
+  dataFile.print("\t");
+  dataFile.print(accel, DEC);
+  dataFile.print("\t");
+  dataFile.print(mag, DEC);
+
 }
+
+
 
 void setup(void)
 {
   Serial.begin(115200);
-  while(!Serial){}
-  
-  myservo.attach(SERVO_PIN);  
+  while (!Serial) {}
+
+  pinMode(10, OUTPUT);
+
+  SD.begin(BUILTIN_SDCARD);
+
+  myservo.attach(SERVO_PIN);
   myservo.write(90); // starts servo at home position of 90deg
 
   Input = 90; // initial "home" servo position
   Setpoint = 90; // resting point in z plane of my current setup (NOTE: subject to change once mounted on actual payload)
   myPID.SetMode(AUTOMATIC); // activate PID
 
+  dataFile = SD.open("data.csv", FILE_WRITE); // open csv file for data logging
+
   // initialize the sensor
-  if(!bno.begin())
+  if (!bno.begin())
   {
     Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
-    while(1);
+    while (1);
   }
 
   delay(1000);
 
   bno.setExtCrystalUse(true);
 
-  
-  // prints all desired column headers to serial monitor
-  Serial.print("X");
-  Serial.print("\tY");
-  Serial.print("\tZ_PID_Input");
-  Serial.print("\tSetpoint_PID");
-  Serial.print("\tServo_PID_Output");
-  Serial.print("\tTemp_degC");
-  Serial.print("\tSys_cal");
-  Serial.print("\tG_cal");
-  Serial.print("\tA_cal");
-  Serial.print("\tM_cal");
+  if (dataFile)
+  {
+    // prints all desired column headers to serial monitor
+    dataFile.print("X");
+    dataFile.print("\tY");
+    dataFile.print("\tZ_PID_Input");
+    dataFile.print("\tSetpoint_PID");
+    dataFile.print("\tServo_PID_Output");
+    dataFile.print("\tTemp_degC");
+    dataFile.print("\tSys_cal");
+    dataFile.print("\tG_cal");
+    dataFile.print("\tA_cal");
+    dataFile.print("\tM_cal");
+    dataFile.println(""); // new line for subsequent data output
 
-  Serial.println(""); // new line for subsequent data output
+    dataFile.close();
+  }
+
 }
 
 void loop(void)
 {
+  
+  dataFile = SD.open("data.csv", FILE_WRITE);
+  
   // gets new sensor event
   sensors_event_t event;
   bno.getEvent(&event);
-  
+
   Input = event.orientation.z; // BNO055 pitch input
   myPID.Compute(); // process with PID library
   myservo.write(Output); // servo outputs PID corrected values
 
   uint8_t temp = bno.getTemp(); // gets current temperature
 
-  // prints all desired column headers to serial monitor
-  Serial.print(event.orientation.x, 3);
-  Serial.print("\t");
-  Serial.print(event.orientation.y, 3);
-  Serial.print("\t");
-  Serial.print(event.orientation.z, 3);
-  Serial.print("\t");
-  Serial.print(Setpoint, 4);
-  Serial.print("\t");
-  Serial.print(Output, 3);
-  Serial.print("\t");
-  Serial.print(temp);
-  Serial.print("\t");
+  if (dataFile)
+  {
+    // prints all desired column headers to serial monitor
+    dataFile.print(event.orientation.x, 3);
+    dataFile.print("\t");
+    dataFile.print(event.orientation.y, 3);
+    dataFile.print("\t");
+    dataFile.print(event.orientation.z, 3);
+    dataFile.print("\t");
+    dataFile.print(Setpoint, 4);
+    dataFile.print("\t");
+    dataFile.print(Output, 3);
+    dataFile.print("\t");
+    dataFile.print(temp);
+    dataFile.print("\t");
 
-  displayCalStatus(); // display calibration status for each sensor event
+    displayCalStatus(); // display calibration status for each sensor event
 
-  Serial.println(""); // new line for next event 
-  
+    dataFile.println(""); // new line for next event
+
+    dataFile.close();
+  }
+
   delay(BNO055_SAMPLERATE_DELAY_MS); // delay between data requests for sensor
 }
