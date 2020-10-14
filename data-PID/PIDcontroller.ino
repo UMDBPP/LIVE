@@ -75,7 +75,7 @@ void setup(void)
   Setpoint = 90; // resting point in z plane of my current setup (NOTE: subject to change once mounted on actual payload)
   myPID.SetMode(AUTOMATIC); // activate PID
 
-  dataFile = SD.open("data.csv", FILE_WRITE); // open csv file for data logging
+  dataFile = SD.open("data%03d.csv", FILE_WRITE); // open csv file for data logging
 
   // initialize the sensor
   if (!bno.begin())
