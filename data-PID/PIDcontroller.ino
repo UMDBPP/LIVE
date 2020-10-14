@@ -103,15 +103,12 @@ void setup(void)
     dataFile.print("\tM_cal");
     dataFile.println(""); // new line for subsequent data output
 
-    dataFile.close();
   }
 
 }
 
 void loop(void)
 {
-  
-  dataFile = SD.open("data.csv", FILE_WRITE);
   
   // gets new sensor event
   sensors_event_t event;
