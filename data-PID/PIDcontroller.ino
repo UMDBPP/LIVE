@@ -28,6 +28,8 @@ Servo myservo; // creates servo object
 
 File dataFile;
 
+char filename[16]; // make it long enough to hold your longest file name, plus a null terminator
+
 #define SERVO_PIN 9 // use pin 9 for servo control
 #define BNO055_SAMPLERATE_DELAY_MS (100) // set the delay between fresh samples
 
@@ -75,7 +77,14 @@ void setup(void)
   Setpoint = 90; // resting point in z plane of my current setup (NOTE: subject to change once mounted on actual payload)
   myPID.SetMode(AUTOMATIC); // activate PID
 
-  dataFile = SD.open("data%03d.csv", FILE_WRITE); // open csv file for data logging
+  int n = 0;
+  snprintf(filename, sizeof(filename), "data%03d.csv", n); // includes a three-digit sequence number in the file name
+  while(SD.exists(filename)) {
+    n++;
+    snprintf(filename, sizeof(filename), "data%03d.csv", n);
+  }
+    
+  dataFile = SD.open(filename, FILE_WRITE); // open csv file for data logging
 
   // initialize the sensor
   if (!bno.begin())
@@ -103,12 +112,15 @@ void setup(void)
     dataFile.print("\tM_cal");
     dataFile.println(""); // new line for subsequent data output
 
+    dataFile.close();
   }
 
 }
 
 void loop(void)
 {
+
+  dataFile = SD.open(filename, FILE_WRITE); // open csv file for data logging
   
   // gets new sensor event
   sensors_event_t event;
