@@ -27,7 +27,7 @@ Servo myservo; // creates servo object
 
 // defines relevant architecture required for sd file writing
 const byte chipSelect = 10;
-SdFat sd;
+SdFatSdio sd;
 SdFile dataFile;
 
 char filename[16]; // make it long enough to hold your longest file name, plus a null terminator
@@ -102,10 +102,7 @@ void setup(void)
   
   pinMode(10, OUTPUT);
 
-  if (!sd.begin(10)) {
-    Serial.println("Initialization failed!");
-    return;
-  }
+  sd.begin();
 
   myservo.attach(SERVO_PIN);
   myservo.write(90); // starts servo at home position of 90deg
