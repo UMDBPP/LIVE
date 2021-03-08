@@ -28,7 +28,7 @@ Servo myservo2; // creates servo object
 
 // defines relevant architecture required for sd file writing
 const byte chipSelect = 10;
-SdFatSdio sd;
+SdFat sd;
 SdFile dataFile;
 
 char filename[16]; // make it long enough to hold your longest file name, plus a null terminator
@@ -44,6 +44,8 @@ Adafruit_BNO055 bno = Adafruit_BNO055(55);
 double Setpoint; // desired servo value
 double Input; // BNO055 pitch angle
 double Output; // servo horn positioning
+double output_1;
+double output_2;
 PID myPID(&Input, &Output, &Setpoint, 1.05, 0, 0, DIRECT); // create PID instance with Kp, Ki, Kd
 
 
@@ -156,12 +158,12 @@ void loop(void)
 
     Input = event.orientation.z; // BNO055 pitch input
     myPID.Compute(); // process with PID library
-    myservo.write(Output); // servo outputs PID corrected values
+    myservo1.write(Output); // servo outputs PID corrected values
     output_1 = Output;
 
     Input = event.orientation.y; // BNO055 pitch input
     myPID.Compute(); // process with PID library
-    myservo.write(Output); // servo outputs PID corrected values
+    myservo2.write(Output); // servo outputs PID corrected values
     output_2 = Output;
 
 
